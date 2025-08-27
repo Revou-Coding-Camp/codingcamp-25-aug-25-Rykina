@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechCorp Solutions - Your Technology Partner</title>
     <link rel="stylesheet" href="style.css">
+    
+</head>
 <body>
     <header>
         <div class="container">
+            <div class="photo-banner">
+                <img src="img/robotic-hand.png" alt="TechCorp Solutions Logo" class="company-logo">
+            </div>
             <div class="logo">TechCorp Solutions</div>
             <div class="tagline">Your Technology Partner</div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Our Profile</a></li>
+                    <li><a href="#profile">Our Profile</a></li>
                     <li><a href="#services">Portofolio</a></li>
-                    <li><a href="#contact">Message Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -23,29 +28,82 @@
 
     <main class="container">
         <section id="home">
-            <h2>Welcome to TechCorp Solutions</h2>
-            <p>We are a leading technology company specializing in innovative software solutions, web development, and digital transformation. Our team of experienced professionals is dedicated to helping businesses grow through cutting-edge technology.</p>
-            <p>With over 10 years of experience in the industry, we have successfully delivered hundreds of projects to clients worldwide, ranging from startups to Fortune 500 companies.</p>
-            <img src="img/technology-human-touch-background-modern-remake-creation-adam.jpg" alt="Technology and Human Touch">
-        </section>
-        
-
-        <section id="about">
-            <h2>Our Profile</h2>
-            <p>Founded in 2013, TechCorp Solutions has been at the forefront of technological innovation. Our mission is to bridge the gap between complex technology and business needs, making digital transformation accessible to organizations of all sizes.</p>
-            <p>Our core values include excellence, innovation, integrity, and customer satisfaction. We believe in building long-term partnerships with our clients and providing solutions that drive real business value.</p>
-            <p>Our team consists of skilled developers, designers, project managers, and consultants who are passionate about technology and committed to delivering high-quality solutions.</p>     
-            <div class="team-avatars">       
-            <img src="img/avery.png" alt="avatar" class="avery"/>
-            <h3>Avery</h3>
-
-            <img src="img/emery.png" alt="avatar" class="emery"/>
-            <h3>Emery</h3>
-
-            <img src="img/kingston.png" alt="avatar" class="kingston"/>
-            <h3>Kingston</h3>
+            <div class="welcome-section">
+                <div class="welcome-speech">
+                    <h2 id="welcomeMessage">Welcome to TechCorp Solutions</h2>
+                    <div class="name-input-container" id="nameInputContainer">
+                        <p>Please enter your name to get a personalized welcome:</p>
+                        <input type="text" id="visitorName" placeholder="Enter your name">
+                        <button id="welcomeBtn" class="welcome-button">Welcome Me!</button>
+                    </div>
+                </div>
             </div>
-            
+            <div class="company-intro">
+                <p>We are a leading technology company specializing in innovative software solutions, web development, and digital transformation. Our team of experienced professionals is dedicated to helping businesses grow through cutting-edge technology.</p>
+                <p>With over 10 years of experience in the industry, we have successfully delivered hundreds of projects to clients worldwide, ranging from startups to Fortune 500 companies.</p>
+            </div>
+        </section>
+
+        <section id="profile">
+            <h2>Our Profile</h2>
+            <img src="img/robotic-hand.png" class="profile-image" alt="Company Profile Image">
+            <div class="profile-section">
+                <h3>About the Company</h3>
+                <div class="company-info">
+                    <div class="company-details">
+                        <p><strong>Company Name:</strong> TechCorp Solutions</p>
+                        <p><strong>Founded:</strong> 2013</p>
+                        <p><strong>Industry:</strong> Information Technology & Software Development</p>
+                        <p><strong>Headquarters:</strong> Innovation City, Tech Valley</p>
+                        <p><strong>Team Size:</strong> 150+ Professionals</p>
+                        <p><strong>Global Reach:</strong> 25+ Countries</p>
+                    </div>
+                    <div class="company-description">
+                        <p>TechCorp Solutions has been at the forefront of technological innovation for over a decade. We specialize in creating cutting-edge software solutions that transform businesses and drive digital growth.</p>
+                        <p>Our team of expert developers, designers, and strategists work collaboratively to deliver exceptional results that exceed client expectations and set new industry standards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h3>Vision and Mission of the Company</h3>
+                
+                <div class="vision-mission">
+                    <div class="vision-card">
+                        <div class="vm-icon">🎯</div>
+                        <h4>Our Vision</h4>
+                        <p>To become the global leader in innovative technology solutions, empowering businesses worldwide to achieve their digital transformation goals and create lasting impact in their industries.</p>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <div class="vm-icon">🚀</div>
+                        <h4>Our Mission</h4>
+                        <p>We are committed to delivering exceptional technology solutions that drive business growth, enhance operational efficiency, and create meaningful connections between brands and their customers through innovative software development and strategic digital consulting.</p>
+                    </div>
+                </div>
+
+                <div class="core-values">
+                    <h4>Our Core Values</h4>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <strong>🔥 Innovation</strong>
+                            <p>Constantly pushing boundaries and exploring new technologies</p>
+                        </div>
+                        <div class="value-item">
+                            <strong>🤝 Integrity</strong>
+                            <p>Maintaining the highest ethical standards in all our interactions</p>
+                        </div>
+                        <div class="value-item">
+                            <strong>⭐ Excellence</strong>
+                            <p>Delivering superior quality in every project we undertake</p>
+                        </div>
+                        <div class="value-item">
+                            <strong>🎯 Customer Focus</strong>
+                            <p>Prioritizing client success and building long-term partnerships</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="services">
@@ -54,28 +112,29 @@
                 <div class="service-card">
                     <div class="service-icon">💻</div>
                     <h3>Web Development</h3>
+                    <img src="img/avery.png" alt="Web Development">
+                    <h3> Avery </h3>
                     <p>Custom web applications and responsive websites built with modern technologies.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📱</div>
                     <h3>Mobile Apps</h3>
+                    <img src="img/emery.png" alt="Mobile Apps">
+                    <h3> Emery </h3>
                     <p>Native and cross-platform mobile applications for iOS and Android.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">☁️</div>
                     <h3>Cloud Solutions</h3>
+                    <img src="img/kingston.png" alt="Cloud Solutions">
+                    <h3> Kingston </h3>
                     <p>Cloud migration, infrastructure setup, and managed cloud services.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔒</div>
-                    <h3>Cybersecurity</h3>
-                    <p>Comprehensive security audits and implementation of security measures.</p>
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>Message Us</h2>
+            <h2>Contact Us</h2>
             <div class="form-container">
                 <div class="success-message" id="successMessage">
                     Thank you for your message! We will get back to you soon.
@@ -101,21 +160,33 @@
 
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project or inquiry..."></textarea>
                         <div class="error" id="messageError">Please enter your message</div>
                     </div>
 
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
+
+                <!-- Display submitted values -->
+                <div class="submitted-values" id="submittedValues" style="display: none;">
+                    <h3>Message Sent Successfully!</h3>
+                    <div class="submitted-data">
+                        <p><strong>Name:</strong> <span id="displayName"></span></p>
+                        <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+                        <p><strong>Phone:</strong> <span id="displayPhone"></span></p>
+                        <p><strong>Message:</strong> <span id="displayMessage"></span></p>
+                        <p><strong>Submitted at:</strong> <span id="displayTime"></span></p>
+                    </div>
+                    <button class="submit-btn" onclick="resetForm()">Send Another Message</button>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 TechCorp Solutions. All rights reserved.</p>
-            <p>Address: 123 Tech Street, Innovation City, TC 12345</p>
-            <p>Phone: +1 (555) 123-4567 | Email: info@techcorpsolutions.com</p>
+            <p> <strong>This website is for educational and project purposes only, not for commercial use.</strong></p>
+            <p>Created by Rykina</p>
         </div>
     </footer>
 

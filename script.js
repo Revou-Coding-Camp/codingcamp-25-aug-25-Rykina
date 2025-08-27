@@ -1,11 +1,91 @@
-// JavaScript for Portfolio Website Form Validation
+// JavaScript for Portfolio Website Form Validation and Welcome Feature
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Welcome feature elements
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const nameInputContainer = document.getElementById('nameInputContainer');
+    const visitorNameInput = document.getElementById('visitorName');
+    const welcomeBtn = document.getElementById('welcomeBtn');
+    
+    // Form elements
     const form = document.getElementById('contactForm');
     const nameField = document.getElementById('name');
     const emailField = document.getElementById('email');
     const phoneField = document.getElementById('phone');
     const messageField = document.getElementById('message');
+
+    // Check if visitor name is already stored
+    const storedName = sessionStorage.getItem('visitorName');
+    if (storedName) {
+        showPersonalizedWelcome(storedName);
+    }
+
+    // Welcome button functionality
+    welcomeBtn.addEventListener('click', function() {
+        const visitorName = visitorNameInput.value.trim();
+        if (visitorName.length >= 2 && /^[a-zA-Z\s]+$/.test(visitorName)) {
+            // Store name in sessionStorage for this session
+            sessionStorage.setItem('visitorName', visitorName);
+            showPersonalizedWelcome(visitorName);
+        } else {
+            alert('Please enter a valid name (at least 2 characters, letters only)');
+            visitorNameInput.focus();
+        }
+    });
+
+    // Enter key support for name input
+    visitorNameInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            welcomeBtn.click();
+        }
+    });
+
+    function showPersonalizedWelcome(name) {
+        const currentHour = new Date().getHours();
+        let greeting = 'Hello';
+        
+        if (currentHour < 12) {
+            greeting = 'Good Morning';
+        } else if (currentHour < 18) {
+            greeting = 'Good Afternoon';
+        } else {
+            greeting = 'Good Evening';
+        }
+
+        // Update welcome message with animation
+        welcomeMessage.innerHTML = `${greeting}, ${name}! 🎉<br><span style="font-size: 1.5rem;">Welcome to TechCorp Solutions</span>`;
+        welcomeMessage.classList.add('personalized-welcome');
+        
+        // Hide name input container with fade out
+        nameInputContainer.style.transition = 'opacity 0.5s ease-out';
+        nameInputContainer.style.opacity = '0';
+        
+        setTimeout(function() {
+            nameInputContainer.style.display = 'none';
+        }, 500);
+
+        // Add a reset button for demo purposes
+        setTimeout(function() {
+            const resetBtn = document.createElement('button');
+            resetBtn.textContent = 'Change Name';
+            resetBtn.className = 'welcome-button';
+            resetBtn.style.marginTop = '1rem';
+            resetBtn.addEventListener('click', function() {
+                resetWelcome();
+            });
+            welcomeMessage.appendChild(resetBtn);
+        }, 1000);
+    }
+
+    function resetWelcome() {
+        sessionStorage.removeItem('visitorName');
+        welcomeMessage.innerHTML = 'Welcome to TechCorp Solutions';
+        welcomeMessage.classList.remove('personalized-welcome');
+        nameInputContainer.style.display = 'block';
+        nameInputContainer.style.opacity = '1';
+        visitorNameInput.value = '';
+        visitorNameInput.focus();
+    }
 
     // Validation functions
     function validateName() {
@@ -76,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     phoneField.addEventListener('blur', validatePhone);
     messageField.addEventListener('blur', validateMessage);
 
-    // Form submission
+    // Form submission with value display
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -86,25 +166,58 @@ document.addEventListener('DOMContentLoaded', function() {
         const isMessageValid = validateMessage();
         
         if (isNameValid && isEmailValid && isPhoneValid && isMessageValid) {
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
+            // Get form values
+            const formData = {
+                name: nameField.value.trim(),
+                email: emailField.value.trim(),
+                phone: phoneField.value.trim(),
+                message: messageField.value.trim(),
+                timestamp: new Date().toLocaleString()
+            };
             
-            // Reset form
-            form.reset();
+            // Display submitted values
+            document.getElementById('displayName').textContent = formData.name;
+            document.getElementById('displayEmail').textContent = formData.email;
+            document.getElementById('displayPhone').textContent = formData.phone;
+            document.getElementById('displayMessage').textContent = formData.message;
+            document.getElementById('displayTime').textContent = formData.timestamp;
             
-            // Hide success message after 5 seconds
-            setTimeout(function() {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
+            // Hide form and show submitted values
+            form.style.display = 'none';
+            document.getElementById('submittedValues').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
             
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({
+            // Scroll to submitted values
+            document.getElementById('submittedValues').scrollIntoView({
                 behavior: 'smooth'
             });
+            
+            // Store in sessionStorage for demo purposes
+            sessionStorage.setItem('lastSubmission', JSON.stringify(formData));
         }
     });
 
-    // Smooth scrolling for navigation links
+    // Global function to reset form
+    window.resetForm = function() {
+        form.style.display = 'block';
+        document.getElementById('submittedValues').style.display = 'none';
+        form.reset();
+        
+        // Hide all error messages
+        document.querySelectorAll('.error').forEach(error => {
+            error.style.display = 'none';
+        });
+        
+        // Focus on first field
+        nameField.focus();
+        
+        // Scroll to form
+        form.scrollIntoView({
+            behavior: 'smooth'
+        });
+    };
+
+    // Update navigation smooth scrolling to include profile
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
